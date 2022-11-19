@@ -9,7 +9,7 @@ logger=telebot.logger
 logger.setLevel(logging.DEBUG)
 
 
-@bot.message_handler(command=["/start"])
+@bot.message_handler(command=["start"])
 def start(message):
     username=message.from_user.username
     bot.reply_to(message,f"Hello,{username}!")
@@ -18,8 +18,8 @@ def start(message):
 @server.route(f"/{BOT_TOKEN}",methods=["POST"])
 def redirect_message():
     json_string=request.get_data().decode("utf=8")
-    update=telebot.typed.Update.de_json(json_string)
-    bor.process_new_updates({update})
+    update=telebot.types.Update.de_json(json_string)
+    bor.process_new_updates([update])
     return"!",200
 
 
