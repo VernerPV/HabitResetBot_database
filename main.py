@@ -7,9 +7,9 @@ bot = telebot.TeleBot(BOT_TOKEN)
 server = Flask(__name__)
 logger = telebot.logger
 logger.setLevel(logging.DEBUG)
-print("sa")
 
-@bot.message_handler(commands=["strt"])
+
+@bot.message_handler(commands=["start"])
 def start(message):
     username = message.from_user.username
     bot.reply_to(message, f"Hello,{username}!")
