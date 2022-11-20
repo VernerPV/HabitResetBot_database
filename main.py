@@ -31,7 +31,7 @@ def start(message):
 
     user_id = message.from_user.id # Определяем ID пользовтеля
     username = message.from_user.first_name # Определяем имя пользовтеля
-    bot.reply_to(message, f"Hello, {username}!", reply_markup=markup) # Приветствуем пользователя
+    bot.reply_to(message, f"Привет, {username}!Я бот-Макс. Я буду помогать тебе менять привычки . Если готов выбирай кнопки в меню.", reply_markup=markup) # Приветствуем пользователя
 
     db_object.execute(f"SELECT user_id FROM users WHERE user_id = {user_id}") # Проверяем есть ли пользователь в БД и если нет то добавляем
     result = db_object.fetchone()
