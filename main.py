@@ -66,7 +66,7 @@ def message_from_user(message):
 
     elif message.text == "Назад":
         markup = types.ReplyKeyboardMarkup(resize_keyboard=True)  # создаем клавиатуру
-        item1 = types.KeyboardButton("О самооздоровление")  # Макет кнопки
+        item1 = types.KeyboardButton("О системе")  # Макет кнопки
         item2 = types.KeyboardButton("Видеолекции")
         item3 = types.KeyboardButton("Расписание")
         item4 = types.KeyboardButton("Об авторе")
