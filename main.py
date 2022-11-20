@@ -22,7 +22,7 @@ def update_messages_count(user_id): #Функция для счетчика со
 @bot.message_handler(commands=["start"]) #обработка событий при вводе команды СТРАТ
 def start(message):
     markup = types.ReplyKeyboardMarkup(resize_keyboard=True) # создаем клавиатуру
-    item1 = types.KeyboardButton("О самооздоровление")    # Макет кнопки
+    item1 = types.KeyboardButton("О системе")    # Макет кнопки
     item2 = types.KeyboardButton("Видеолекции")
     item3 = types.KeyboardButton("Расписание")
     item4 = types.KeyboardButton("Об авторе")
@@ -49,9 +49,11 @@ def start(message):
 def message_from_user(message):
     if message.text == "Об авторе":
         file = open('VAG.jpg', 'rb')
-        bot.send_photo(message.from_user.id, file, caption="Жданов Владимир Алексеевич, врач ЛФК. Если тут будетчто"
-                                                           "много написано, то как будет это воспринимать чат бот?")
-
+        bot.send_photo(message.from_user.id, file, caption= "Жданов Владимир Алексеевич, врач ЛФК. Тут нужно написать все , что хотите о себе рассказать и ссылки на каналы YouTube")
+    elif message.text == "О системе":
+        file = open('System.jpg', 'rb')
+        bot.send_document(message.from_user.id, file, caption= "Система 'Самооздоровления в ходе повседневных дел' обеспечивает оздоровление в ходе повседневных дел , весь период "
+                                                               "бодрствования и даже во сне , а не в определенное время занятий в спортзале , юассейне или во время пробежек...")
     elif message.text == "Видеолекции":
         markup = types.ReplyKeyboardMarkup(resize_keyboard=True)  # создаем клавиатуру
         item1 = types.KeyboardButton("Правило 5 пальцев")  # Макет кнопки
