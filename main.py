@@ -4,6 +4,8 @@ import logging
 import psycopg2
 from config import *
 from flask import Flask, request
+from telebot import types
+
 
 bot = telebot.TeleBot(BOT_TOKEN)
 server = Flask(__name__)
@@ -13,24 +15,31 @@ logger.setLevel(logging.DEBUG)
 db_connection = psycopg2.connect(DB_URI,sslmode="require")
 db_object = db_connection.cursor()
 
-def update_messages_count(user_id):
+def update_messages_count(user_id): #Функция для счетчика сообщений от пользователя
     db_object.execute(f"UPDATE users SET messages=messages+1 WHERE user_id={user_id}")
     db_connection.commit()
 
-@bot.message_handler(commands=["start"])
+@bot.message_handler(commands=["start"]) #обработка событий при вводе команды СТРАТ
 def start(message):
-    user_id = message.from_user.id
-    username = message.from_user.first_name
-    bot.reply_to(message, f"Hello, {username}!")
+    markup = types.ReplyKeyboardMarkup(resize_keyboard=True) # создаем клавиатуру
+    item1 = types.KeyboardButton("О самооздоровление")    # pfujnjdrf ryjgrb
+    item2 = types.KeyboardButton("Видеолекции")
+    item3 = types.KeyboardButton("Задать расписание")
+    item4 = types.KeyboardButton("Об авторе")
 
-    db_object.execute(f"SELECT user_id FROM users WHERE user_id = {user_id}")
+    markup.add(item1, item2, item3, item4)
+
+    user_id = message.from_user.id # Определяем ID пользовтеля
+    username = message.from_user.first_name # Определяем имя пользовтеля
+    bot.reply_to(message, f"Hello, {username}!", reply_markup=markup) # Приветствуем пользователя
+
+    db_object.execute(f"SELECT user_id FROM users WHERE user_id = {user_id}") # Проверяем есть ли пользователь в БД и если нет то добавляем
     result = db_object.fetchone()
-
     if not result:
         db_object.execute("INSERT INTO users(user_id,user_name,messages) VALUES(%s, %s, %s)", (user_id, username, 0))
         db_connection.commit()
     update_messages_count(user_id)
-@bot.message_handler(func=lambda message: True, content_types=["text"])
+@bot.message_handler(func=lambda message: True, content_types=["text"]) # Отслеживаем все сообщения пользователя и  увеличиваем счетчик
 def message_from_user(message):
     user_id = message.from_user.id
     update_messages_count(user_id)
