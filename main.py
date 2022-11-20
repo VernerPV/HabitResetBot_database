@@ -24,7 +24,7 @@ def start(message):
     markup = types.ReplyKeyboardMarkup(resize_keyboard=True) # создаем клавиатуру
     item1 = types.KeyboardButton("О самооздоровление")    # pfujnjdrf ryjgrb
     item2 = types.KeyboardButton("Видеолекции")
-    item3 = types.KeyboardButton("Задать расписание")
+    item3 = types.KeyboardButton("Расписание")
     item4 = types.KeyboardButton("Об авторе")
 
     markup.add(item1, item2, item3, item4)
