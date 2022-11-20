@@ -49,7 +49,8 @@ def start(message):
 def message_from_user(message):
     if message.text == "Об авторе":
         file = open('VAG.jpg', 'rb')
-        bot.send_photo(message.from_user.id, file, caption="Жданов Владимир Алексеевич")
+        bot.send_photo(message.from_user.id, file, caption="Жданов Владимир Алексеевич, врач ЛФК. Если тут будетчто"
+                                                           "много написано, то как будет это воспринимать чат бот?")
 
     elif message.text == "Видеолекции":
         markup = types.ReplyKeyboardMarkup(resize_keyboard=True)  # создаем клавиатуру
