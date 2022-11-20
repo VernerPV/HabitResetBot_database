@@ -14,7 +14,7 @@ db_connection = psycopg2.connect(DB_URI,sslmode="require")
 db_object = db_connection.cursor()
 
 def update_messages_count(user_id):
-    db_object.execute(f"UPDATE users SET messages=messages+1 WHERE id={user_id}")
+    db_object.execute(f"UPDATE users SET messages=messages+1 WHERE user_id={user_id}")
     db_connection.commit()
 
 @bot.message_handler(commands=["start"])
