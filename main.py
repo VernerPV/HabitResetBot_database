@@ -49,7 +49,7 @@ def start(message):
 def message_from_user(message):
     if message.text == "Об авторе":
         file = open('VAG.jpg', 'rb')
-        bot.send_message(message.from_user.id, "Жданов Владимир Алексеевич",file)
+        bot.send_message(message.from_user.id, file, caption="Жданов Владимир Алексеевич")
     elif message.text == "Видеолекции":
         markup = types.ReplyKeyboardMarkup(resize_keyboard=True)  # создаем клавиатуру
         item1 = types.KeyboardButton("Правило 5 пальцев")  # Макет кнопки
