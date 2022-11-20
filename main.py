@@ -61,7 +61,7 @@ def message_from_user(message):
         item3 = types.KeyboardButton("Расписание")
         item4 = types.KeyboardButton("Об авторе")
         markup.add(item1, item2, item3, item4)
-        bot.send_message(message.from_user.id, "", reply_markup=markup)
+        bot.send_message(message.from_user.id, "Назад", reply_markup=markup)
 
     user_id = message.from_user.id
     update_messages_count(user_id)
