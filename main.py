@@ -22,7 +22,7 @@ def update_messages_count(user_id): #Функция для счетчика со
 @bot.message_handler(commands=["start"]) #обработка событий при вводе команды СТРАТ
 def start(message):
     markup = types.ReplyKeyboardMarkup(resize_keyboard=True) # создаем клавиатуру
-    item1 = types.KeyboardButton("О самооздоровление")    # pfujnjdrf ryjgrb
+    item1 = types.KeyboardButton("О самооздоровление")    # Макет кнопки
     item2 = types.KeyboardButton("Видеолекции")
     item3 = types.KeyboardButton("Расписание")
     item4 = types.KeyboardButton("Об авторе")
@@ -39,8 +39,30 @@ def start(message):
         db_object.execute("INSERT INTO users(user_id,user_name,messages) VALUES(%s, %s, %s)", (user_id, username, 0))
         db_connection.commit()
     update_messages_count(user_id)
+
+
+
 @bot.message_handler(func=lambda message: True, content_types=["text"]) # Отслеживаем все сообщения пользователя и  увеличиваем счетчик
 def message_from_user(message):
+    if message.from_user.type == "Об авторе":
+        bot.send_message(message.from_user.id, "Жданов Владимир Алексеевич")
+    elif message.from_user.type == "Видеолекции":
+        markup = types.ReplyKeyboardMarkup(resize_keyboard=True)  # создаем клавиатуру
+        item1 = types.KeyboardButton("1")  # Макет кнопки
+        item2 = types.KeyboardButton("2")
+        item3 = types.KeyboardButton("3")
+        back = types.KeyboardButton("Назад")
+        markup.add(item1, item2, item3, back)
+        bot.send_message(message.from_user.id, "Видеолекции", reply_markup=markup)
+    elif message.from_user.type == "Назад":
+        markup = types.ReplyKeyboardMarkup(resize_keyboard=True)  # создаем клавиатуру
+        item1 = types.KeyboardButton("О самооздоровление")  # Макет кнопки
+        item2 = types.KeyboardButton("Видеолекции")
+        item3 = types.KeyboardButton("Расписание")
+        item4 = types.KeyboardButton("Об авторе")
+        markup.add(item1, item2, item3, item4)
+        bot.send_message(message.from_user.id, "", reply_markup=markup)
+
     user_id = message.from_user.id
     update_messages_count(user_id)
 
