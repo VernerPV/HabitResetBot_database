@@ -13,20 +13,27 @@ logger.setLevel(logging.DEBUG)
 db_connection = psycopg2.connect(DB_URI,sslmode="require")
 db_object = db_connection.cursor()
 
+def update_messages_count(user_id):
+    db_object.execute(f"UPDATE users SET messages=messages+1 WHERE id={user_id}")
+    db_connection.commit()
 
 @bot.message_handler(commands=["start"])
 def start(message):
-    id = message.from_user.id
+    user_id = message.from_user.id
     username = message.from_user.first_name
     bot.reply_to(message, f"Hello, {username}!")
 
-    db_object.execute(f"SELECT user_id FROM users WHERE user_id = {id}")
+    db_object.execute(f"SELECT user_id FROM users WHERE user_id = {user_id}")
     result = db_object.fetchone()
 
     if not result:
-        db_object.execute("INSERT INTO users(user_id,user_name,messages) VALUES(%s, %s, %s)", (id, username, 0))
+        db_object.execute("INSERT INTO users(user_id,user_name,messages) VALUES(%s, %s, %s)", (user_id, username, 0))
         db_connection.commit()
-
+    update_messages_count(user_id)
+@bot.message_handler(func=lambda message: True, content_types=["text"])
+def message_from_user(message):
+    user_id = message.from_user.id
+    update_messages_count(user_id)
 
 @server.route(f"/{BOT_TOKEN}", methods=["POST"])
 def redirect_message():
