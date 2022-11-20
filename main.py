@@ -52,7 +52,7 @@ def message_from_user(message):
         bot.send_photo(message.from_user.id, file, caption= "Жданов Владимир Алексеевич, врач ЛФК. Тут нужно написать все , что хотите о себе рассказать и ссылки на каналы YouTube")
     elif message.text == "О системе":
         file = open('System.jpg', 'rb')
-        bot.send_document(message.from_user.id, file, caption= "Система 'Самооздоровления в ходе повседневных дел' обеспечивает оздоровление в ходе повседневных дел , весь период "
+        bot.send_photo(message.from_user.id, file, caption= "Система 'Самооздоровления в ходе повседневных дел' обеспечивает оздоровление в ходе повседневных дел , весь период "
                                                                "бодрствования и даже во сне , а не в определенное время занятий в спортзале , юассейне или во время пробежек...")
     elif message.text == "Видеолекции":
         markup = types.ReplyKeyboardMarkup(resize_keyboard=True)  # создаем клавиатуру
