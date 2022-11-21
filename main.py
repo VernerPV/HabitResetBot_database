@@ -10,7 +10,7 @@ from telebot import types
 
 DATABASE_URL = os.getenv('DATABASE_URL')
 print('!!!!!!!!!!!!!!!!!!!!!!')
-BOT_TOKEN =S3Connection(os.environ['BOT_TOKEN'])
+BOT_TOKEN =os.environ['BOT_TOKEN']
 print(BOT_TOKEN)
 APP_URL = os.getenv('APP_URL')
 DB_URI = os.getenv('DB_URI')
