@@ -9,11 +9,11 @@ from flask import Flask, request
 from telebot import types
 
 DATABASE_URL = os.getenv('DATABASE_URL')
-
-BOT_TOKEN = os.getenv('BOT_TOKEN')
+print('!!!!!!!!!!!!!!!!!!!!!!')
+BOT_TOKEN =S3Connection(os.environ['BOT_TOKEN'])
 APP_URL = os.getenv('APP_URL')
 DB_URI = os.getenv('DB_URI')
-
+print(BOT_TOKEN)
 
 
 bot = telebot.TeleBot(BOT_TOKEN)
