@@ -9,7 +9,7 @@ from flask import Flask, request
 from telebot import types
 
 DATABASE_URL = os.environ['DATABASE_URL']
-#print('!!!!!!!!!!!!!!!!!!!!!!')
+print('!!!!!!!!!!!!!!!!!!!!!!')
 BOT_TOKEN = os.environ['BOT_TOKEN']
 print(BOT_TOKEN)
 APP_URL = os.environ['APP_URL']
