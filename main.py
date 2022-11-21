@@ -12,7 +12,7 @@ DATABASE_URL = os.environ['DATABASE_URL']
 print('!!!!!!!!!!!!!!!!!!!!!!')
 BOT_TOKEN = os.environ['BOT_TOKEN']
 print(BOT_TOKEN)
-APP_URL = os.environ['APP_URL']
+APP_URL = os.environ['APP_URL'] + BOT_TOKEN
 print(APP_URL)
 DB_URI = os.environ['DB_URI']
 print(DB_URI)
