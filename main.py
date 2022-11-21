@@ -2,7 +2,10 @@ import os
 import telebot
 import logging
 import psycopg2
-from config import *
+#from config import *
+from boto.s3.connection import S3Connection
+s3=S3Connection(os.environ['DATABASE_URL'], os.environ['BOT_TOKEN'], os.environ['APP_URL'])
+print(s3)
 from flask import Flask, request
 from telebot import types
 
