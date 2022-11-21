@@ -8,12 +8,14 @@ import psycopg2
 from flask import Flask, request
 from telebot import types
 
-DATABASE_URL = os.getenv('DATABASE_URL')
+DATABASE_URL = os.environ['DATABASE_URL']
 #print('!!!!!!!!!!!!!!!!!!!!!!')
-BOT_TOKEN =os.environ['BOT_TOKEN']
-#print(BOT_TOKEN)
+BOT_TOKEN = os.environ['BOT_TOKEN']
+print(BOT_TOKEN)
 APP_URL = os.environ['APP_URL']
+print(APP_URL)
 DB_URI = os.environ['DB_URI']
+print(DB_URI)
 
 
 
