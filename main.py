@@ -12,6 +12,9 @@ DATABASE_URL = os.getenv('DATABASE_URL')
 
 BOT_TOKEN = os.getenv('BOT_TOKEN')
 APP_URL = os.getenv('APP_URL')
+DB_URI = os.getenv('DB_URI')
+
+
 
 bot = telebot.TeleBot(BOT_TOKEN)
 server = Flask(__name__)
