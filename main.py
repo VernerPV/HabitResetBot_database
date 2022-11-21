@@ -8,10 +8,10 @@ from boto.s3.connection import S3Connection
 from flask import Flask, request
 from telebot import types
 
-DATABASE_URL = os.environ['DATABASE_URL']
+DATABASE_URL = os.getenv('DATABASE_URL')
 
-BOT_TOKEN = os.environ['BOT_TOKEN']
-APP_URL = os.environ['APP_URL']
+BOT_TOKEN = os.getenv('BOT_TOKEN')
+APP_URL = os.getenv('APP_URL')
 
 bot = telebot.TeleBot(BOT_TOKEN)
 server = Flask(__name__)
