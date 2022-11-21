@@ -4,16 +4,16 @@ import logging
 import psycopg2
 #from config import *
 
-from boto.s3.connection import S3Connection
+#from boto.s3.connection import S3Connection
 from flask import Flask, request
 from telebot import types
 
 DATABASE_URL = os.getenv('DATABASE_URL')
-print('!!!!!!!!!!!!!!!!!!!!!!')
+#print('!!!!!!!!!!!!!!!!!!!!!!')
 BOT_TOKEN =os.environ['BOT_TOKEN']
-print(BOT_TOKEN)
-APP_URL = os.getenv('APP_URL')
-DB_URI = os.getenv('DB_URI')
+#print(BOT_TOKEN)
+APP_URL = os.environ['APP_URL']
+DB_URI = os.environ['DB_URI']
 
 
 
