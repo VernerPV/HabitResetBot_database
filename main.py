@@ -24,6 +24,13 @@ def update_messages_count(user_id): #Функция для счетчика со
     db_object.execute(f"UPDATE users SET messages=messages+1 WHERE user_id={user_id}")
     db_connection.commit()
 
+def select_from_db(table, name):#функуция выбора  данных из таблиц
+    db_object.execute(f"SELECT {name} FROM {table}")
+    result = db_object.fetchall()
+    return (result)
+
+
+
 @bot.message_handler(commands=["start"]) #обработка событий при вводе команды СТРАТ
 def start(message):
     markup = types.ReplyKeyboardMarkup(resize_keyboard=True) # создаем клавиатуру
@@ -49,12 +56,17 @@ def start(message):
 
 @bot.message_handler(func=lambda message: True, content_types=["text"]) # Отслеживаем все сообщения пользователя и  увеличиваем счетчик
 
-
-
 def message_from_user(message):
     if message.text == "Об авторе":
-        file = open('VAG.jpg', 'rb')
-        bot.send_photo(message.from_user.id, file, caption= "Жданов Владимир Алексеевич, врач ЛФК. Тут нужно написать все , что хотите о себе рассказать и ссылки на каналы YouTube")
+        result = select_from_db("info", "author")
+        if not result:
+            bot.reply_to(message, "No data...")
+        else:
+            for i, item in enumerate(result):
+                img_name = item[3]
+                description = item[2]
+
+        bot.send_photo(message.from_user.id, f"\foto\{img_name}", caption= description)
     elif message.text == "О системе":
         file = open('System.jpg', 'rb')
         bot.send_photo(message.from_user.id, file, caption= "Система 'Самооздоровления в ходе повседневных дел' обеспечивает оздоровление в ходе повседневных дел , весь период "
