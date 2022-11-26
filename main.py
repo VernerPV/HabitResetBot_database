@@ -96,7 +96,7 @@ def message_from_user(message):
         bot.send_message(message.from_user.id, "Видеолекции", reply_markup=markup)
         print(button)
     elif message.text in button.keys():
-        text = button.get('message.text')
+        text = button.get(message.text)
         print(f"!!!!!!{text}")
         #file = open('5fingers.mp4', 'rb')
         #bot.send_document(message.from_user.id, file)
