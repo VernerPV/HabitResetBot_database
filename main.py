@@ -63,7 +63,7 @@ def message_from_user(message):
             bot.reply_to(message, "No data...")
         else:
             for i, item in enumerate(result):
-                img_name = open(f'foto\\{item[3].strip()}', 'rb')
+                img_name = open(f'foto/{item[3].strip()}', 'rb')
                 description = item[2]
 
         bot.send_photo(message.from_user.id, img_name, caption= description)
