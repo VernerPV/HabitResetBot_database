@@ -1,3 +1,4 @@
+import datetime
 import os
 import telebot
 import logging
@@ -107,9 +108,25 @@ def message_from_user(message):
         item4 = types.KeyboardButton("Об авторе")
         markup.add(item1, item2, item3, item4)
         bot.send_message(message.from_user.id, "Назад", reply_markup=markup)
+    elif message.text == "Расписание":
+
+
+
+
+
+
 
     user_id = message.from_user.id
     update_messages_count(user_id)
+
+
+
+def sheduler_message():
+    now = datetime.datetime.now()
+    if (now.hour() > 8) and (now.hour() <20):
+        if (now.minute() % 5==0):
+
+        bot.send_message('838386449', 'Wake up!')
 
 @server.route(f"/{BOT_TOKEN}", methods=["POST"])
 def redirect_message():
