@@ -87,8 +87,8 @@ def message_from_user(message):
                 name_video = item[3].strip()
                 description = item[2].strip()
                 url_video = item[1].strip()
-                button[i] = types.KeyboardButton(name_video)  # Макет кнопки
-                button_txt = +button[i]
+                button = types.KeyboardButton(name_video)  # Макет кнопки
+                button_txt = +button
                 print(button_txt)
         #item2 = types.KeyboardButton("2")
         #item3 = types.KeyboardButton("3")
