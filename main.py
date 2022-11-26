@@ -5,7 +5,7 @@ import logging
 import psycopg2
 from flask import Flask, request
 from telebot import types
-import schedule, time
+import schedule
 
 DATABASE_URL = os.environ['DATABASE_URL']
 BOT_TOKEN = os.environ['BOT_TOKEN']
@@ -40,7 +40,7 @@ def update_data_video_count(name_video): #Функция для счетчика
 
 
 def job1(p):
-    bot.send_message('838386449', 'Wake up!')
+    bot.send_message(838386449, 'Wake up!')
 
 schedule.every(30).seconds.do(job1, p='Через 10 секунд')
 
