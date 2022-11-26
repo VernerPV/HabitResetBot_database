@@ -31,7 +31,9 @@ def select_from_db(table, name):#функуция выбора  данных и�
     result = db_object.fetchall()
     return (result)
 
-
+def update_data_video_count(name_video): #Функция для счетчика запроса видео
+    db_object.execute(f"UPDATE data_video SET count_views=count_views WHERE name LIKE '{name_video}%'")
+    db_connection.commit()
 
 @bot.message_handler(commands=["start"]) #обработка событий при вводе команды СТРАТ
 def start(message):
@@ -89,16 +91,12 @@ def message_from_user(message):
                 url_video = item[1].strip()
                 button[name_video] = description + url_video
                 markup.add(types.KeyboardButton(name_video)) # Макет кнопки
-        #item2 = types.KeyboardButton("2")
-        #item3 = types.KeyboardButton("3")
-        #button.append(types.KeyboardButton("Назад"))
         markup.add(types.KeyboardButton("Назад"))
         bot.send_message(message.from_user.id, "Видеолекции", reply_markup=markup)
-        print(button)
-    elif message.text in button.keys():
+
+    elif message.text in button.keys(): # Проверяем есть ли запрос от пользователя в словаре с видео
         text = button.get(message.text)
-        #file = open('5fingers.mp4', 'rb')
-        #bot.send_document(message.from_user.id, file)
+        update_data_video_count(message.text)
         bot.send_message(message.from_user.id, text)
 
     elif message.text == "Назад":
