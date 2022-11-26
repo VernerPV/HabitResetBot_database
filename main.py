@@ -94,6 +94,7 @@ def message_from_user(message):
         #button.append(types.KeyboardButton("Назад"))
         markup.add(types.KeyboardButton("Назад"))
         bot.send_message(message.from_user.id, "Видеолекции", reply_markup=markup)
+        print(button)
     elif message.text in button.keys():
         text = button.get('message.text')
         print(f"!!!!!!{text}")
