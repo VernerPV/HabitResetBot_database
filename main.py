@@ -20,6 +20,8 @@ logger.setLevel(logging.DEBUG)
 db_connection = psycopg2.connect(DB_URI,sslmode="require")
 db_object = db_connection.cursor()
 
+button = list
+
 def update_messages_count(user_id): #Функция для счетчика сообщений от пользователя
     db_object.execute(f"UPDATE users SET messages=messages+1 WHERE user_id={user_id}")
     db_connection.commit()
@@ -85,7 +87,9 @@ def message_from_user(message):
                 name_video = item[3].strip()
                 description = item[2].strip()
                 url_video = item[1].strip()
-                item[i] = types.KeyboardButton(name_video)  # Макет кнопки
+                button[i] = types.KeyboardButton(name_video)  # Макет кнопки
+                button_txt = +button[i]
+                print(button_txt)
         #item2 = types.KeyboardButton("2")
         #item3 = types.KeyboardButton("3")
         back = types.KeyboardButton("Назад")
