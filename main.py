@@ -9,6 +9,13 @@ import schedule
 
 
 
+from apscheduler.schedulers.asyncio import AsyncIOScheduler
+
+
+
+
+
+
 
 DATABASE_URL = os.environ['DATABASE_URL']
 BOT_TOKEN = os.environ['BOT_TOKEN']
@@ -27,11 +34,18 @@ db_object = db_connection.cursor()
 
 button = {}
 
+#!!!!!!!!!!!!!!!!!!!!!!!
+
+scheduler = AsyncIOScheduler()
+
+async def send_message_to_admin():
+
+        await bot.send_message(text="Сообщение по таймеру", chat_id=838386449)
 
 
+scheduler.add_job(send_message_to_admin, "interval", seconds=5)
 
-
-
+#!!!!!!!!!!!!!!!!!!!!!!!!!!
 
 def update_messages_count(user_id): #Функция для счетчика сообщений от пользователя
     db_object.execute(f"UPDATE users SET messages=messages+1 WHERE user_id={user_id}")
@@ -48,11 +62,11 @@ def update_data_video_count(name_video): #Функция для счетчика
 
 
 
-def job1():
-    print("I'm working...")
-    bot.send_message(838386449, 'Wake up!')
+#def job1():
+#    print("I'm working...")
+#    bot.send_message(838386449, 'Wake up!')
 
-schedule.every(30).seconds.do(job1)
+#schedule.every(30).seconds.do(job1)
 
 
 
