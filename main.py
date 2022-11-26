@@ -20,7 +20,7 @@ logger.setLevel(logging.DEBUG)
 db_connection = psycopg2.connect(DB_URI,sslmode="require")
 db_object = db_connection.cursor()
 
-button = []
+button = {}
 
 def update_messages_count(user_id): #Функция для счетчика сообщений от пользователя
     db_object.execute(f"UPDATE users SET messages=messages+1 WHERE user_id={user_id}")
@@ -87,16 +87,18 @@ def message_from_user(message):
                 name_video = item[3].strip()
                 description = item[2].strip()
                 url_video = item[1].strip()
-                #button.append(types.KeyboardButton(name_video))  # Макет кнопки
-                markup.add(types.KeyboardButton(name_video))
+                button[name_video] = description
+                markup.add(types.KeyboardButton(name_video)) # Макет кнопки
         #item2 = types.KeyboardButton("2")
         #item3 = types.KeyboardButton("3")
         #button.append(types.KeyboardButton("Назад"))
         markup.add(types.KeyboardButton("Назад"))
         bot.send_message(message.from_user.id, "Видеолекции", reply_markup=markup)
-    elif message.text == "Правило 5 пальцев":
-        file = open('5fingers.mp4', 'rb')
-        bot.send_document(message.from_user.id, file)
+    elif message.text in button.keys():
+        #button.get('message.text')
+        #file = open('5fingers.mp4', 'rb')
+        #bot.send_document(message.from_user.id, file)
+        bot.send_message(message.from_user.id, button.get('message.text'))
 
     elif message.text == "Назад":
         markup = types.ReplyKeyboardMarkup(resize_keyboard=True)  # создаем клавиатуру
