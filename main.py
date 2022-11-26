@@ -139,7 +139,7 @@ def sheduler_message():
     if (now.hour() > 8) and (now.hour() <20):
         if (now.minute() % 5==0):
 
-            bot.send_message('838386449', 'Wake up!')
+            bot.send_message(838386449, 'Wake up!')
 
     else:
         print("Ошибка в часах")
