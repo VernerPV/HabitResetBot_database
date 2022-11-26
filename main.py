@@ -28,10 +28,6 @@ db_object = db_connection.cursor()
 button = {}
 
 
-def send_stats():
-    def send_stat():
-        bot.send_message(838386449, 'Мое сообщение')
-schedule.every().day.at('15:13').do(send_stats)
 
 
 
@@ -159,9 +155,7 @@ def redirect_message():
 
 
 
-while True:
-    schedule.run_pending()
-    time.sleep(5)
+
 
 
 if __name__ == "__main__":
