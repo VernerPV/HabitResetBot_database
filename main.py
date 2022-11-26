@@ -109,6 +109,7 @@ def message_from_user(message):
         markup.add(item1, item2, item3, item4)
         bot.send_message(message.from_user.id, "Назад", reply_markup=markup)
     elif message.text == "Расписание":
+        print("Hfcgbcfybt ")
 
 
 
@@ -126,7 +127,7 @@ def sheduler_message():
     if (now.hour() > 8) and (now.hour() <20):
         if (now.minute() % 5==0):
 
-        bot.send_message('838386449', 'Wake up!')
+            bot.send_message('838386449', 'Wake up!')
 
 @server.route(f"/{BOT_TOKEN}", methods=["POST"])
 def redirect_message():
