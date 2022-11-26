@@ -31,11 +31,9 @@ button = {}
 def send_stats():
     def send_stat():
         bot.send_message(838386449, 'Мое сообщение')
-schedule.every().day.at('15:11').do(send_stats)
+schedule.every().day.at('15:13').do(send_stats)
 
-while True:
-    schedule.run_pending()
-    time.sleep(5)
+
 
 
 
@@ -161,7 +159,9 @@ def redirect_message():
 
 
 
-
+while True:
+    schedule.run_pending()
+    time.sleep(5)
 
 
 if __name__ == "__main__":
