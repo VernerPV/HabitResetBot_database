@@ -138,17 +138,6 @@ def message_from_user(message):
 
 
 
-def sheduler_message():
-    now = datetime.datetime.now()
-    print(f"!!!!!!!!{now}")
-    if (now.hour() > 8) and (now.hour() <20):
-        if (now.minute() % 5==0):
-
-            bot.send_message(838386449, 'Wake up!')
-
-    else:
-        print("Ошибка в часах")
-
 
 @server.route(f"/{BOT_TOKEN}", methods=["POST"])
 def redirect_message():
@@ -160,23 +149,6 @@ def redirect_message():
 
 
 
-async def callback_minute(context: ContextTypes.DEFAULT_TYPE):
- await context.bot.send_message(chat_id='838386449', text='One message every minute')
-
-application = Application.builder().token(BOT_TOKEN).build()
-job_queue = application.job_queue
-
-job_minute = job_queue.run_repeating(callback_minute, interval=60, first=10)
-
-application.run_polling()
-
-#def schedule_checker():
-#    while True:
-#        schedule.run_pending()
-#        sleep(1)
-
-#def function_to_run():
-#    return bot.send_message(838386449, "This is a message to send.")
 
 
 if __name__ == "__main__":
@@ -185,8 +157,6 @@ if __name__ == "__main__":
 
 
 
-#    schedule.every().saturday.at("07:00").do(function_to_run)
-#    Thread(target=schedule_checker).start()
 
 
     server.run(host="0.0.0.0", port=int(os.environ.get("PORT", 5000)))
