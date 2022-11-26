@@ -87,12 +87,12 @@ def message_from_user(message):
                 name_video = item[3].strip()
                 description = item[2].strip()
                 url_video = item[1].strip()
-                button.append(types.KeyboardButton(name_video))  # Макет кнопки
-
+                #button.append(types.KeyboardButton(name_video))  # Макет кнопки
+                markup.add(types.KeyboardButton(name_video))
         #item2 = types.KeyboardButton("2")
         #item3 = types.KeyboardButton("3")
-        button.append(types.KeyboardButton("Назад"))
-        markup.add(print(button))
+        #button.append(types.KeyboardButton("Назад"))
+        #markup.add(print(button))
         bot.send_message(message.from_user.id, "Видеолекции", reply_markup=markup)
     elif message.text == "Правило 5 пальцев":
         file = open('5fingers.mp4', 'rb')
