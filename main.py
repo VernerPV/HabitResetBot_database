@@ -32,7 +32,7 @@ def select_from_db(table, name):#функуция выбора  данных и�
     return (result)
 
 def update_data_video_count(name_video): #Функция для счетчика запроса видео
-    db_object.execute(f"UPDATE data_video SET count_views=count_views WHERE name LIKE '{name_video}%'")
+    db_object.execute(f"UPDATE data_video SET count_views=count_views+1 WHERE name LIKE '{name_video}%'")
     db_connection.commit()
 
 @bot.message_handler(commands=["start"]) #обработка событий при вводе команды СТРАТ
