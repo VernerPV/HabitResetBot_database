@@ -31,7 +31,7 @@ button = {}
 def send_stats():
     def send_stat():
         bot.send_message(838386449, 'Мое сообщение')
-schedule.every().day.at('15:09').do(send_stat)
+schedule.every().day.at('15:11').do(send_stats)
 
 while True:
     schedule.run_pending()
