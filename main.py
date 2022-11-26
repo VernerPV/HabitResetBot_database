@@ -142,6 +142,7 @@ def sheduler_message():
             bot.send_message('838386449', 'Wake up!')
 
     else:
+        print("Ошибка в часах")
 
 
 @server.route(f"/{BOT_TOKEN}", methods=["POST"])
