@@ -41,10 +41,12 @@ def update_data_video_count(name_video): #Функция для счетчика
 
 
 
-def job1(p):
+def job1():
+    print("I'm working...")
     bot.send_message(838386449, 'Wake up!')
 
-schedule.every(30).seconds.do(job1, p='Через 10 секунд')
+schedule.every(30).seconds.do(job1)
+
 
 
 
@@ -160,6 +162,3 @@ if __name__ == "__main__":
     bot.set_webhook(url=APP_URL)
     server.run(host="0.0.0.0", port=int(os.environ.get("PORT", 5000)))
 
-while True:
-    schedule.run_pending()
-    time.sleep(15)
