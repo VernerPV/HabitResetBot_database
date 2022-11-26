@@ -27,6 +27,18 @@ db_object = db_connection.cursor()
 
 button = {}
 
+
+def send_stats():
+    def send_stat():
+        bot.send_message(838386449, 'Мое сообщение')
+    schedule.every().day.at('15:06').do(send_stat)
+
+    while True:
+        schedule.run_pending()
+        time.sleep(5)
+
+
+
 def update_messages_count(user_id): #Функция для счетчика сообщений от пользователя
     db_object.execute(f"UPDATE users SET messages=messages+1 WHERE user_id={user_id}")
     db_connection.commit()
@@ -145,6 +157,7 @@ def redirect_message():
     update = telebot.types.Update.de_json(json_string)
     bot.process_new_updates([update])
     return "!", 200
+
 
 
 
