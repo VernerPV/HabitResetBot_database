@@ -91,8 +91,8 @@ def message_from_user(message):
 
         #item2 = types.KeyboardButton("2")
         #item3 = types.KeyboardButton("3")
-        back = types.KeyboardButton("Назад")
-        markup.add(item1, item2, item3, back)
+        button.append(types.KeyboardButton("Назад"))
+        markup.add(button)
         bot.send_message(message.from_user.id, "Видеолекции", reply_markup=markup)
     elif message.text == "Правило 5 пальцев":
         file = open('5fingers.mp4', 'rb')
