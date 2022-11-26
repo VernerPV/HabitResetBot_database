@@ -2,5 +2,4 @@ pyTelegramBotAPI
 flask
 psycopg2
 schedule
-multiprocessing
 time
