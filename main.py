@@ -6,7 +6,7 @@ import psycopg2
 from flask import Flask, request
 from telebot import types
 import schedule
-from telegram.ext import Updater
+
 
 
 
