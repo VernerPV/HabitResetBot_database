@@ -157,8 +157,24 @@ def redirect_message():
     return "!", 200
 
 
+def schedule_checker():
+    while True:
+        schedule.run_pending()
+        sleep(1)
+
+def function_to_run():
+    return bot.send_message(838386449, "This is a message to send.")
+
+
 if __name__ == "__main__":
     bot.remove_webhook()
     bot.set_webhook(url=APP_URL)
+
+
+
+    schedule.every().saturday.at("07:00").do(function_to_run)
+    Thread(target=schedule_checker).start()
+
+
     server.run(host="0.0.0.0", port=int(os.environ.get("PORT", 5000)))
 
