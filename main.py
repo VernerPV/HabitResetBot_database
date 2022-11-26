@@ -6,7 +6,7 @@ import psycopg2
 from flask import Flask, request
 from telebot import types
 import schedule
-from threading import Thread
+
 import time
 
 
@@ -158,13 +158,13 @@ def redirect_message():
     return "!", 200
 
 
-def schedule_checker():
-    while True:
-        schedule.run_pending()
-        sleep(1)
+#def schedule_checker():
+#    while True:
+#        schedule.run_pending()
+#        sleep(1)
 
-def function_to_run():
-    return bot.send_message(838386449, "This is a message to send.")
+#def function_to_run():
+#    return bot.send_message(838386449, "This is a message to send.")
 
 
 if __name__ == "__main__":
@@ -173,8 +173,8 @@ if __name__ == "__main__":
 
 
 
-    schedule.every().saturday.at("07:00").do(function_to_run)
-    Thread(target=schedule_checker).start()
+#    schedule.every().saturday.at("07:00").do(function_to_run)
+#    Thread(target=schedule_checker).start()
 
 
     server.run(host="0.0.0.0", port=int(os.environ.get("PORT", 5000)))
