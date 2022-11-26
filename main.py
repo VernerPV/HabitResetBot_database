@@ -63,10 +63,10 @@ def message_from_user(message):
             bot.reply_to(message, "No data...")
         else:
             for i, item in enumerate(result):
-                img_name = item[3]
+                img_name =f"foto\"+{item[3]}
                 description = item[2]
 
-        bot.send_photo(message.from_user.id, f"\foto\{img_name}", caption= description)
+        bot.send_photo(message.from_user.id, img_name, caption= description)
     elif message.text == "О системе":
         file = open('System.jpg', 'rb')
         bot.send_photo(message.from_user.id, file, caption= "Система 'Самооздоровления в ходе повседневных дел' обеспечивает оздоровление в ходе повседневных дел , весь период "
