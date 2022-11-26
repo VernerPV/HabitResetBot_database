@@ -87,7 +87,7 @@ def message_from_user(message):
                 name_video = item[3].strip()
                 description = item[2].strip()
                 url_video = item[1].strip()
-                button[name_video] = description
+                button[name_video] = description + url_video
                 markup.add(types.KeyboardButton(name_video)) # Макет кнопки
         #item2 = types.KeyboardButton("2")
         #item3 = types.KeyboardButton("3")
@@ -97,10 +97,9 @@ def message_from_user(message):
         print(button)
     elif message.text in button.keys():
         text = button.get(message.text)
-        print(f"!!!!!!{text}")
         #file = open('5fingers.mp4', 'rb')
         #bot.send_document(message.from_user.id, file)
-        bot.send_message(message.from_user.id, 'Ghbdtn ')
+        bot.send_message(message.from_user.id, text)
 
     elif message.text == "Назад":
         markup = types.ReplyKeyboardMarkup(resize_keyboard=True)  # создаем клавиатуру
