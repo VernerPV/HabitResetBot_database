@@ -5,7 +5,7 @@ import logging
 import psycopg2
 from flask import Flask, request
 from telebot import types
-import schedule
+#import schedule
 import time
 
 

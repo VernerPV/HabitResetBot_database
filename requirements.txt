@@ -1,5 +1,5 @@
 pyTelegramBotAPI
 flask
 psycopg2
-schedule
+
 time
