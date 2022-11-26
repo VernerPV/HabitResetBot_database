@@ -95,10 +95,11 @@ def message_from_user(message):
         markup.add(types.KeyboardButton("Назад"))
         bot.send_message(message.from_user.id, "Видеолекции", reply_markup=markup)
     elif message.text in button.keys():
-        #button.get('message.text')
+        text = button.get('message.text')
+        print(f"!!!!!!{text}")
         #file = open('5fingers.mp4', 'rb')
         #bot.send_document(message.from_user.id, file)
-        bot.send_message(message.from_user.id, button.get('message.text'))
+        bot.send_message(message.from_user.id, text)
 
     elif message.text == "Назад":
         markup = types.ReplyKeyboardMarkup(resize_keyboard=True)  # создаем клавиатуру
