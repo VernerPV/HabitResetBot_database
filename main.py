@@ -124,6 +124,7 @@ def message_from_user(message):
 
 def sheduler_message():
     now = datetime.datetime.now()
+    print(now)
     if (now.hour() > 8) and (now.hour() <20):
         if (now.minute() % 5==0):
 
