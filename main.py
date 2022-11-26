@@ -5,6 +5,7 @@ import logging
 import psycopg2
 from flask import Flask, request
 from telebot import types
+import schedule, time
 
 DATABASE_URL = os.environ['DATABASE_URL']
 BOT_TOKEN = os.environ['BOT_TOKEN']
@@ -35,6 +36,16 @@ def select_from_db(table, name):#функуция выбора  данных и�
 def update_data_video_count(name_video): #Функция для счетчика запроса видео
     db_object.execute(f"UPDATE data_video SET count_views=count_views+1 WHERE name LIKE '{name_video}%'")
     db_connection.commit()
+
+
+
+def job1(p):
+    bot.send_message('838386449', 'Wake up!')
+
+schedule.every(30).seconds.do(job1, p='Через 10 секунд')
+
+
+
 
 @bot.message_handler(commands=["start"]) #обработка событий при вводе команды СТРАТ
 def start(message):
@@ -129,6 +140,9 @@ def sheduler_message():
         if (now.minute() % 5==0):
 
             bot.send_message('838386449', 'Wake up!')
+
+    else:
+
 
 @server.route(f"/{BOT_TOKEN}", methods=["POST"])
 def redirect_message():
