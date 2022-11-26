@@ -25,7 +25,7 @@ def update_messages_count(user_id): #Функция для счетчика со
     db_connection.commit()
 
 def select_from_db(table, name):#функуция выбора  данных из таблиц
-    db_object.execute(f"SELECT * FROM {table} WHERE name LIKE '{name}'")
+    db_object.execute(f"SELECT * FROM {table} WHERE name LIKE '{name}%'")
     result = db_object.fetchall()
     return (result)
 
