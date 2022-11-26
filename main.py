@@ -64,13 +64,21 @@ def message_from_user(message):
         else:
             for i, item in enumerate(result):
                 img_name = open(f'foto/{item[3].strip()}', 'rb')
-                description = item[2]
-
+                description = item[2].strip()
         bot.send_photo(message.from_user.id, img_name, caption= description)
     elif message.text == "О системе":
-        file = open('System.jpg', 'rb')
-        bot.send_photo(message.from_user.id, file, caption= "Система 'Самооздоровления в ходе повседневных дел' обеспечивает оздоровление в ходе повседневных дел , весь период "
-                                                               "бодрствования и даже во сне , а не в определенное время занятий в спортзале , юассейне или во время пробежек...")
+        result = select_from_db("info", "system")
+        if not result:
+            bot.reply_to(message, "No data...")
+        else:
+            for i, item in enumerate(result):
+                img_name = open(f'foto/{item[3].strip()}', 'rb')
+                description = item[2].strip()
+        bot.send_photo(message.from_user.id, img_name, caption="description")
+        bot.reply_to(message, description)
+        #file = open('System.jpg', 'rb')
+        #bot.send_photo(message.from_user.id, file, caption= "Система 'Самооздоровления в ходе повседневных дел' обеспечивает оздоровление в ходе повседневных дел , весь период "
+                                                               #"бодрствования и даже во сне , а не в определенное время занятий в спортзале , юассейне или во время пробежек...")
     elif message.text == "Видеолекции":
         markup = types.ReplyKeyboardMarkup(resize_keyboard=True)  # создаем клавиатуру
         item1 = types.KeyboardButton("Правило 5 пальцев")  # Макет кнопки
