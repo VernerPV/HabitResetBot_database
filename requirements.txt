@@ -1,6 +1,6 @@
 pyTelegramBotAPI
-flask
-psycopg2
-schedule
+flask~=2.2.2
+psycopg2~=2.9.5
+schedule~=1.1.0
 apscheduler
 python-telegram-bot

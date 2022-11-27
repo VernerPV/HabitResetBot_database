@@ -1,21 +1,12 @@
-import os
-import time
 import schedule
-import telebot
+import time
 
-BOT_TOKEN = os.environ['BOT_TOKEN']
-bot = telebot.TeleBot(BOT_TOKEN)
+def job():
+    print("I'm working...")
 
-
-
-def start_command():
-    bot.send_message(838386449, 'тут будет чота гавгать')
-
-
-
-schedule.every(30).seconds.do(start_command) #Здесь запускаем бота в нужный момент
-
-
+# Run job every 3 second/minute/hour/day/week,
+# Starting 3 second/minute/hour/day/week from now
+schedule.every(3).seconds.do(job)
 
 while True:
     schedule.run_pending()
