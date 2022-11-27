@@ -29,8 +29,6 @@ button = {}
 
 async def mn():
     print('Hello ...')
-    await asyncio.sleep(1)
-    print('... World!')
 
 
 #asyncio.run(main())
