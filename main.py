@@ -27,14 +27,14 @@ button = {}
 
 
 
-async def main():
+async def mn():
     print('Hello ...')
     await asyncio.sleep(1)
     print('... World!')
 
 
-
-schedule.every(10).seconds.do(asyncio.run(main()))
+#asyncio.run(main())
+schedule.every(10).seconds.do(mn())
 
 def update_messages_count(user_id):  # Функция для счетчика сообщений от пользователя
     db_object.execute(f"UPDATE users SET messages=messages+1 WHERE user_id={user_id}")
