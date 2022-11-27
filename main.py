@@ -32,7 +32,7 @@ async def mn():
 
 
 #asyncio.run(main())
-schedule.every(10).seconds.do(mn())
+#schedule.every(10).seconds.do(mn())
 
 def update_messages_count(user_id):  # Функция для счетчика сообщений от пользователя
     db_object.execute(f"UPDATE users SET messages=messages+1 WHERE user_id={user_id}")
