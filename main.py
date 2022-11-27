@@ -6,7 +6,7 @@ import psycopg2
 from flask import Flask, request
 from telebot import types
 import asyncio
-# import schedule
+import schedule
 
 
 DATABASE_URL = os.environ['DATABASE_URL']
@@ -33,8 +33,8 @@ async def main():
     print('... World!')
 
 
-asyncio.run(main())
 
+schedule.every(10).seconds.do(asyncio.run(main()))
 
 def update_messages_count(user_id):  # Функция для счетчика сообщений от пользователя
     db_object.execute(f"UPDATE users SET messages=messages+1 WHERE user_id={user_id}")
