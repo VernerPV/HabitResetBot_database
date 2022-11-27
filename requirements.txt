@@ -3,3 +3,4 @@ flask
 psycopg2
 schedule
 apscheduler
+python-telegram-bot
