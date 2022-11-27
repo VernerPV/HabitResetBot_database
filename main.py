@@ -34,18 +34,7 @@ db_object = db_connection.cursor()
 
 button = {}
 
-#!!!!!!!!!!!!!!!!!!!!!!!
 
-scheduler = AsyncIOScheduler()
-
-async def send_message_to_admin():
-
-        await bot.send_message(text="Сообщение по таймеру", chat_id=838386449)
-
-
-scheduler.add_job(send_message_to_admin, "interval", seconds=5)
-
-#!!!!!!!!!!!!!!!!!!!!!!!!!!
 
 def update_messages_count(user_id): #Функция для счетчика сообщений от пользователя
     db_object.execute(f"UPDATE users SET messages=messages+1 WHERE user_id={user_id}")
@@ -59,14 +48,6 @@ def select_from_db(table, name):#функуция выбора  данных и�
 def update_data_video_count(name_video): #Функция для счетчика запроса видео
     db_object.execute(f"UPDATE data_video SET count_views=count_views+1 WHERE name LIKE '{name_video}%'")
     db_connection.commit()
-
-
-
-#def job1():
-#    print("I'm working...")
-#    bot.send_message(838386449, 'Wake up!')
-
-#schedule.every(30).seconds.do(job1)
 
 
 
@@ -175,10 +156,5 @@ def redirect_message():
 if __name__ == "__main__":
     bot.remove_webhook()
     bot.set_webhook(url=APP_URL)
-
-
-
-
-
     server.run(host="0.0.0.0", port=int(os.environ.get("PORT", 5000)))
 
