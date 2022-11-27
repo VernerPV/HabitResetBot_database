@@ -6,7 +6,7 @@ def job():
 
 # Run job every 3 second/minute/hour/day/week,
 # Starting 3 second/minute/hour/day/week from now
-schedule.every(3).seconds.do(job)
+schedule.every(15).seconds.do(job)
 
 while True:
     schedule.run_pending()
