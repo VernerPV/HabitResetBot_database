@@ -13,7 +13,7 @@ def start_command():
 
 
 
-schedule.every().day.at("17:47").do(start_command) #Здесь запускаем бота в нужный момент
+schedule.every(30).seconds.do(start_command) #Здесь запускаем бота в нужный момент
 
 
 
