@@ -51,11 +51,11 @@ updater = Updater(BOT_TOKEN)
 
 dp = updater.dispatcher
 
-dp.add_handler(CommandHandler("start", start)
+dp.add_handler(CommandHandler("start", start))
 
 text_handler = MessageHandler(Filters.text, echo)
 
-dp.add_handler(text_handler))
+dp.add_handler(text_handler)
 
 
 
@@ -63,6 +63,6 @@ updater.start_polling()
 
 updater.idle()
 
-if __name__ == '__main__':
-    main()
+#if __name__ == '__main__':
+    #main()
 
